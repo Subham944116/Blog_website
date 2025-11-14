@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div >
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Your Posts</h2>
+        <a href="{% url 'create_post' %}" class="btn btn-primary">Create New Post</a>
+    </div>
+
+    <ul class="list-group">
+        {% for p in posts %}
+        <li class="list-group-item mb-3 shadow-sm">
+            <h4>{{ p.title }}</h4>
+            <p class="text-muted">{{ p.desc }}</p>
+            <small class="text-secondary">{{ p.date_post }}</small>
+        </li>
+        {% empty %}
+        <li class="list-group-item text-center">
+            No posts yet.
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock %}

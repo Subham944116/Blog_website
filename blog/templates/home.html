@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home - My Blog
+{% endblock %}
+
+{% block content %}
+
+<div >
+    <h1 class="mb-4">All Blog Posts</h1>
+
+    <div class="row">
+        {% for p in posts %}
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title">{{ p.title }}</h4>
+                    <p class="text-muted">{{ p.desc }}</p>
+
+                    <small class="text-secondary">
+                        Posted on: {{ p.date_post }}  
+                        <br>
+                        By: {{ p.author.username }}
+                    </small>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No posts available.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
